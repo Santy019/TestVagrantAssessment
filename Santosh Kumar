@@ -1,0 +1,34 @@
+class product:
+    def _init_(self,productname, unitprice, gst, quantity):
+        self.productname=productname
+        self.unitprice=unitprice
+        self.gst=gst
+        self.quantity=quantity
+        self.gstamount=(self.unitprice*self.quantity)*(self.gst/100) 
+    def calculation(self):
+        if self.unitprice>500:
+            self.unitprice=self.unitprice-((5/100)*self.unitprice)
+            sum=self.unitprice*self.quantity+((self.gst/100)*self.unitprice*self.quantity)
+        else: 
+            sum = self.unitprice*self.quantity+((self.gst/100)*self.unitprice*self.quantity)
+        return sum
+
+
+p1=(product(input("Enter the product name"),int(input("Enter the unit price")),int(input("Enter the gst in percentage")),int(input("Enter the quantity"))))
+p2=(product(input("Enter the product name"),int(input("Enter the unit price")),int(input("Enter the gst in percentage")),int(input("Enter the quantity"))))
+p3=(product(input("Enter the product name"),int(input("Enter the unit price")),int(input("Enter the gst in percentage")),int(input("Enter the quantity"))))
+p4=(product(input("Enter the product name"),int(input("Enter the unit price")),int(input("Enter the gst in percentage")),int(input("Enter the quantity"))))
+a=p1.calculation()
+b=p2.calculation()
+c=p3.calculation()
+d=p4.calculation()
+print(p1.calculation())
+print(p2.calculation())
+print(p3.calculation())
+print(p4.calculation())
+print("Total payment =",a+b+c+d)
+basket=[p1,p2,p3,p4]
+maxgst=max(p1.gstamount,p2.gstamount,p3.gstamount,p4.gstamount)
+for i in basket:
+    if i.gstamount==maxgst:
+        print(i.productname,"has maximum gst")
